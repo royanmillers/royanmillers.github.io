@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -24,7 +25,7 @@
             background: #2e7d32;
             color: white;
             text-align: center;
-            padding: 25px 15px;
+            padding: 28px 15px;
         }
 
         header h1 {
@@ -35,22 +36,6 @@
 
         .tagline {
             font-size: 17px;
-        }
-
-        /* Banner */
-        .banner-container {
-            width: 100%;
-            max-width: 1100px;
-            margin: 20px auto;
-            padding: 0 15px;
-        }
-
-        .banner-container img {
-            width: 100%;
-            height: auto;
-            display: block;
-            border-radius: 12px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
         }
 
         .container {
@@ -85,6 +70,7 @@
             font-size: 16px;
         }
 
+        /* WhatsApp Button */
         .whatsapp {
             background: #25D366;
             color: white;
@@ -98,6 +84,28 @@
             font-size: 17px;
         }
 
+        .whatsapp:hover {
+            background: #1ebe5d;
+        }
+
+        /* Facebook Button */
+        .facebook {
+            background: #1877F2;
+            color: white;
+            padding: 15px 20px;
+            text-decoration: none;
+            border-radius: 8px;
+            display: block;
+            text-align: center;
+            margin: 18px 0;
+            font-weight: bold;
+            font-size: 17px;
+        }
+
+        .facebook:hover {
+            background: #166fe5;
+        }
+
         .contact {
             background: #f1f8e9;
             padding: 18px;
@@ -107,6 +115,12 @@
 
         .contact p {
             font-size: 17px;
+        }
+
+        .location {
+            background: #fafafa;
+            padding: 15px;
+            border-radius: 8px;
         }
 
         footer {
@@ -133,18 +147,9 @@
                 font-size: 15px;
             }
 
-            .banner-container {
-                margin: 15px auto;
-                padding: 0 10px;
-            }
-
-            .banner-container img {
-                border-radius: 8px;
-            }
-
             .container {
-                margin: 0;
-                padding: 18px 15px;
+                margin: 10px auto;
+                padding: 15px;
                 border-radius: 0;
             }
 
@@ -163,7 +168,8 @@
                 padding: 14px 12px;
             }
 
-            .whatsapp {
+            .whatsapp,
+            .facebook {
                 width: 100%;
                 padding: 16px 10px;
                 font-size: 17px;
@@ -186,165 +192,190 @@
 
 <body>
 
-<header>
-    <h1>ROYAN MILLERS POSHOMILL & CEREAL SHOP</h1>
+    <!-- HEADER -->
+    <header>
 
-    <div class="tagline">
-        Freshness You Can Taste, Quality You Can Trust!
-    </div>
-</header>
+        <h1>
+            ROYAN MILLERS POSHOMILL & CEREAL SHOP
+        </h1>
 
+        <div class="tagline">
+            Freshness You Can Taste, Quality You Can Trust!
+        </div>
 
-<!-- Promotional Banner -->
-<div class="banner-container">
-    <img
-        src="royan-millers-banner.png"
-        alt="ROYAN MILLERS POSHOMILL & CEREAL SHOP - Cooking Oil ATM, Posho Mill and Cereals"
-    >
-</div>
+    </header>
 
 
-<div class="container">
-
-    <h2>🌽 Our Services</h2>
-
-    <div class="service">
-        🌽 <strong>Grade 1 & Grade 2 Milling</strong>
-    </div>
-
-    <div class="service">
-        🌾 <strong>Quality Cereals & Grains</strong>
-    </div>
-
-    <div class="service">
-        ⚖️ <strong>Accurate Price-Unit Measuring</strong>
-    </div>
-
-    <div class="service">
-        🛒 <strong>Retail Sales</strong>
-    </div>
-
-    <div class="service">
-        🛢️ <strong>Cooking Oil ATM</strong>
-    </div>
+    <!-- MAIN CONTENT -->
+    <div class="container">
 
 
-    <p>
-        <strong>
-            Royan Miller & Cereal Shop offers quality and freshness at fair prices.
-        </strong>
-    </p>
+        <!-- SERVICES -->
+        <h2>🌽 Our Services</h2>
 
+        <div class="service">
+            🌽 <strong>Grade 1 & Grade 2 Milling</strong>
+        </div>
 
-    <!-- WhatsApp Order Button -->
+        <div class="service">
+            🌾 <strong>Quality Cereals & Grains</strong>
+        </div>
 
-    <a href="https://wa.me/254742629273?text=Hello%20ROYAN%20MILLER%20POSHOMILL%20%26%20CEREAL%20SHOP%2C%20I%27d%20like%20to%20make%20an%20order."
-       target="_blank"
-       class="whatsapp">
+        <div class="service">
+            ⚖️ <strong>Accurate Price-Unit Measuring</strong>
+        </div>
 
-        💬 Order on WhatsApp
+        <div class="service">
+            🛒 <strong>Retail Sales</strong>
+        </div>
 
-    </a>
+        <div class="service">
+            🛢️ <strong>Cooking Oil ATM</strong>
+        </div>
 
-
-    <h2>💰 Our Prices & Offers</h2>
-
-    <div class="price">
-        <strong>1. Grade 1 Milling</strong><br>
-        KSh 20 @ 2 kg
-    </div>
-
-    <div class="price">
-        <strong>2. Grade 2 Milling</strong><br>
-        KSh 10 @ 2 kg
-    </div>
-
-    <div class="price">
-        <strong>3. Already Milled Flour</strong><br>
-        Available at your preferred price
-    </div>
-
-    <div class="price">
-        <strong>4. Sugar</strong><br>
-        Available at your preferred price
-    </div>
-
-    <div class="price">
-        <strong>5. Rice</strong><br>
-        Available at your preferred price
-    </div>
-
-    <div class="price">
-        <strong>6. Salad</strong><br>
-        Available at your preferred price
-    </div>
-
-    <div class="price">
-        <strong>7. Cereals</strong><br>
-        Available at your preferred price
-    </div>
-
-    <div class="price">
-        <strong>8. Delivery</strong><br>
-        Available at the customer's cost
-    </div>
-
-
-    <p>
-        <strong>
-            💰 Your Budget, Your Choice — Shop Within Your Budget!
-        </strong>
-    </p>
-
-
-    <h2>📍 Location</h2>
-
-    <p>
-        Along the Kisumu–Homa Bay Pier Road,
-        near Makongeni Centre,
-        beside Grandpark Hotel.
-    </p>
-
-
-    <div class="contact">
-
-        <h2>📞 Contact Us</h2>
 
         <p>
-            <strong>Phone / WhatsApp:</strong><br>
-            0742 629 273
-        </p>
-
-        <p>
-            <strong>Email:</strong><br>
-            raelroy2@gmail.com
+            <strong>
+                Royan Miller & Cereal Shop offers quality and freshness at fair prices.
+            </strong>
         </p>
 
 
-        <a href="https://wa.me/254742629273?text=Hello%20ROYAN%20MILLER%20POSHOMILL%20%26%20CEREAL%20SHOP"
+        <!-- WHATSAPP ORDER -->
+        <a href="https://wa.me/254742629273?text=Hello%20ROYAN%20MILLER%20POSHOMILL%20%26%20CEREAL%20SHOP%2C%20I%27d%20like%20to%20make%20an%20order."
            target="_blank"
+           rel="noopener noreferrer"
            class="whatsapp">
 
-            💬 Chat With Us on WhatsApp
+            💬 Order on WhatsApp
 
         </a>
 
+
+        <!-- PRICES -->
+        <h2>💰 Our Prices & Offers</h2>
+
+        <div class="price">
+            <strong>1. Grade 1 Milling</strong><br>
+            KSh 20 @ 2 kg
+        </div>
+
+        <div class="price">
+            <strong>2. Grade 2 Milling</strong><br>
+            KSh 10 @ 2 kg
+        </div>
+
+        <div class="price">
+            <strong>3. Already Milled Flour</strong><br>
+            Available at your preferred price
+        </div>
+
+        <div class="price">
+            <strong>4. Sugar</strong><br>
+            Available at your preferred price
+        </div>
+
+        <div class="price">
+            <strong>5. Rice</strong><br>
+            Available at your preferred price
+        </div>
+
+        <div class="price">
+            <strong>6. Salad</strong><br>
+            Available at your preferred price
+        </div>
+
+        <div class="price">
+            <strong>7. Cereals</strong><br>
+            Available at your preferred price
+        </div>
+
+        <div class="price">
+            <strong>8. Delivery</strong><br>
+            Available at the customer's cost
+        </div>
+
+
+        <p>
+            <strong>
+                💰 Your Budget, Your Choice — Shop Within Your Budget!
+            </strong>
+        </p>
+
+
+        <!-- LOCATION -->
+        <h2>📍 Location</h2>
+
+        <div class="location">
+
+            <p>
+                Along the Kisumu–Homa Bay Pier Road,
+                near Makongeni Centre,
+                beside Grandpark Hotel.
+            </p>
+
+        </div>
+
+
+        <!-- CONTACT -->
+        <div class="contact">
+
+            <h2>📞 Contact Us</h2>
+
+            <p>
+                <strong>Phone / WhatsApp:</strong><br>
+                0742 629 273
+            </p>
+
+            <p>
+                <strong>Email:</strong><br>
+                raelroy2@gmail.com
+            </p>
+
+
+            <!-- WHATSAPP CHAT -->
+            <a href="https://wa.me/254742629273?text=Hello%20ROYAN%20MILLER%20POSHOMILL%20%26%20CEREAL%20SHOP"
+               target="_blank"
+               rel="noopener noreferrer"
+               class="whatsapp">
+
+                💬 Chat With Us on WhatsApp
+
+            </a>
+
+
+            <!-- FACEBOOK -->
+            <a href="https://www.facebook.com/share/1Gxc4CuULU/?mibextid=wwXIfr"
+               target="_blank"
+               rel="noopener noreferrer"
+               class="facebook">
+
+                📘 Follow Us on Facebook
+
+            </a>
+
+        </div>
+
+
+        <!-- CLOSING MESSAGE -->
+        <p>
+            <strong>
+                Come visit us today — your trusted choice for quality and value!
+            </strong>
+        </p>
+
+
     </div>
 
 
-    <p>
-        <strong>
-            Come visit us today — your trusted choice for quality and value!
-        </strong>
-    </p>
+    <!-- FOOTER -->
+    <footer>
 
-</div>
+        © 2026 ROYAN MILLER POSHOMILL & CEREAL SHOP
 
-
-<footer>
-    © 2026 ROYAN MILLER POSHOMILL & CEREAL SHOP
-</footer>
+    </footer>
 
 
 </body>
 </html>
+```
