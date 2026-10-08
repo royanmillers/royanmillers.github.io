@@ -280,6 +280,17 @@
             font-size: 14px;
         }
 
+
+        /* SHOPPING CART */
+        .pack-card { position: relative; }
+        .cart-button { background:#2e7d32; color:white; border:none; padding:12px 18px; border-radius:7px; cursor:pointer; font-size:16px; font-weight:bold; margin-top:14px; width:100%; }
+        .cart-button:hover { background:#1b5e20; }
+        .cart-box { position:sticky; top:58px; z-index:900; background:#fff; border:2px solid #2e7d32; padding:15px; margin:20px 0; border-radius:8px; box-shadow:0 3px 10px rgba(0,0,0,0.12); }
+        .cart-box h3 { margin:0 0 8px; color:#2e7d32; }
+        .cart-item { padding:7px 0; border-bottom:1px solid #eee; }
+        .cart-total { font-weight:bold; margin-top:10px; }
+        .clear-cart { background:#777; color:white; border:none; padding:9px 14px; border-radius:6px; cursor:pointer; margin-top:10px; }
+
         @media (max-width: 600px) {
             header {
                 padding: 24px 12px;
@@ -507,6 +518,7 @@
             🛢️ Cooking Oil — KSh 30<br>
             🍬 Sugar — KSh 30<br>
             🍚 Rice — KSh 30
+        <button class="cart-button" onclick="addToCart('KSh 100 Comrade / Single Living Pack', 100)">🛒 Add to Cart</button>
         </div>
 
         <div class="offer">
@@ -519,6 +531,7 @@
             🫘 Beans — KSh 80<br>
             🍅 Tomatoes — KSh 60<br>
             🧅 Onions — KSh 20
+        <button class="cart-button" onclick="addToCart('KSh 500 Family Pack (2–4 Members)', 500)">🛒 Add to Cart</button>
         </div>
 
         <div class="offer">
@@ -531,6 +544,7 @@
             🫘 Beans — KSh 160<br>
             🍅 Tomatoes — KSh 120<br>
             🧅 Onions — KSh 40
+        <button class="cart-button" onclick="addToCart('KSh 1,000 Family Pack (Up to 8 Members)', 1000)">🛒 Add to Cart</button>
         </div>
 
         <div class="offer">
@@ -539,6 +553,16 @@
             🎁 <strong>Get KSh 100 OFF your next purchase!</strong>
         </div>
     </section>
+
+
+    <!-- SHOPPING CART -->
+    <div class="cart-box" id="cart">
+        <h3>🛒 Your Cart <span id="cart-count">(0)</span></h3>
+        <div id="cart-items">Your cart is empty.</div>
+        <div class="cart-total" id="cart-total"></div>
+        <button class="whatsapp" id="cart-order" onclick="orderCart()" style="display:none; border:none; cursor:pointer;">💬 Order Cart on WhatsApp</button>
+        <button class="clear-cart" id="clear-cart" onclick="clearCart()" style="display:none;">Clear Cart</button>
+    </div>
 
     <section>
         <h2>⭐ Why Choose Royan Millers?</h2>
@@ -644,5 +668,12 @@
     Freshness You Can Taste, Quality You Can Trust!
 </footer>
 
+<script>
+let cart=[];
+function addToCart(name,price){const e=cart.find(i=>i.name===name);if(e)e.quantity++;else cart.push({name,price,quantity:1});updateCart();document.getElementById('cart').scrollIntoView({behavior:'smooth',block:'center'});}
+function updateCart(){const items=document.getElementById('cart-items'),count=document.getElementById('cart-count'),total=document.getElementById('cart-total'),order=document.getElementById('cart-order'),clear=document.getElementById('clear-cart');const n=cart.reduce((s,i)=>s+i.quantity,0),t=cart.reduce((s,i)=>s+i.price*i.quantity,0);count.textContent='('+n+')';if(!cart.length){items.innerHTML='Your cart is empty.';total.textContent='';order.style.display='none';clear.style.display='none';return;}items.innerHTML=cart.map(i=>'<div class="cart-item">'+i.name+' × '+i.quantity+' — KSh '+(i.price*i.quantity).toLocaleString()+'</div>').join('');total.textContent='Cart Total: KSh '+t.toLocaleString();order.style.display='block';clear.style.display='inline-block';}
+function clearCart(){cart=[];updateCart();}
+function orderCart(){if(!cart.length)return;const lines=cart.map(i=>i.name+' × '+i.quantity+' = KSh '+(i.price*i.quantity).toLocaleString());const total=cart.reduce((s,i)=>s+i.price*i.quantity,0);const msg='Hello Royan Miller, I will like to order this pack:%0A%0A'+lines.join('%0A')+'%0A%0ATotal: KSh '+total.toLocaleString()+'%0A%0APlease confirm my order.';window.open('https://wa.me/254742629273?text='+msg,'_blank');}
+</script>
 </body>
 </html>
