@@ -395,7 +395,15 @@
                 font-size: 13px;
             }
         }
-    </style>
+    
+/* Budget cart */
+.budget-cart-box{margin-top:22px;padding:18px;border-radius:12px;background:#fff;border:2px solid #2e7d32}
+.budget-input{width:100%;padding:11px;margin:10px 0;border:1px solid #bbb;border-radius:7px;font-size:16px}
+.cart-button{display:inline-block;margin-top:10px;padding:10px 16px;border:0;border-radius:7px;background:#2e7d32;color:#fff;font-size:15px;font-weight:bold;cursor:pointer}
+.cart-summary-item{display:flex;justify-content:space-between;gap:10px;padding:8px 0;border-bottom:1px solid #ddd}
+.cart-total{font-size:20px;font-weight:bold;margin-top:12px}
+
+</style>
 </head>
 
 <body id="top">
@@ -442,40 +450,47 @@
     </section>
 
     <section id="products">
-        <h2>🛒 Our Products</h2>
-
-        <div class="products">
-            <div class="product">
-                🌽 <strong>Maize Flour</strong><br>
-                Freshly milled flour available.
-            </div>
-
-            <div class="product">
-                🌾 <strong>Cereals & Grains</strong><br>
-                Quality cereals and grains.
-            </div>
-
-            <div class="product">
-                🍚 <strong>Rice</strong><br>
-                Available at your preferred quantity.
-            </div>
-
-            <div class="product">
-                🍬 <strong>Sugar</strong><br>
-                Available at your preferred quantity.
-            </div>
-
-            <div class="product">
-                🛢️ <strong>Cooking Oil</strong><br>
-                Cooking oil available through our ATM.
-            </div>
-
-            <div class="product">
-                🛍️ <strong>Retail Items</strong><br>
-                Buy according to your budget.
-            </div>
-        </div>
-    </section>
+<h2>🛒 Our Products</h2>
+<p><strong>Enter the amount you want to spend, then add the item to your cart.</strong></p>
+<div class="products">
+<div class="product">
+🌾 <strong>Cereals</strong><br>Available at your preferred price
+<input class="budget-input" id="amount-cereals" type="number" min="1" step="1" placeholder="Enter amount (KSh)">
+<button class="cart-button" type="button" onclick="addBudgetItem('Cereals','amount-cereals')">🛒 Add to Cart</button>
+</div>
+<div class="product">
+🛢️ <strong>Salad</strong><br>Available at your preferred price
+<input class="budget-input" id="amount-salad" type="number" min="1" step="1" placeholder="Enter amount (KSh)">
+<button class="cart-button" type="button" onclick="addBudgetItem('Salad','amount-salad')">🛒 Add to Cart</button>
+</div>
+<div class="product">
+🍚 <strong>Rice</strong><br>Available at your preferred price
+<input class="budget-input" id="amount-rice" type="number" min="1" step="1" placeholder="Enter amount (KSh)">
+<button class="cart-button" type="button" onclick="addBudgetItem('Rice','amount-rice')">🛒 Add to Cart</button>
+</div>
+<div class="product">
+🍬 <strong>Sugar</strong><br>Available at your preferred price
+<input class="budget-input" id="amount-sugar" type="number" min="1" step="1" placeholder="Enter amount (KSh)">
+<button class="cart-button" type="button" onclick="addBudgetItem('Sugar','amount-sugar')">🛒 Add to Cart</button>
+</div>
+<div class="product">
+🌽 <strong>Already Milled Flour</strong><br>Available at your preferred price
+<input class="budget-input" id="amount-flour" type="number" min="1" step="1" placeholder="Enter amount (KSh)">
+<button class="cart-button" type="button" onclick="addBudgetItem('Already Milled Flour','amount-flour')">🛒 Add to Cart</button>
+</div>
+<div class="product">
+🌾 <strong>Grade 2 Milling</strong><br>KSh 10 @ 2 kg
+<input class="budget-input" id="amount-grade2" type="number" min="1" step="1" placeholder="Enter amount (KSh)">
+<button class="cart-button" type="button" onclick="addBudgetItem('Grade 2 Milling','amount-grade2')">🛒 Add to Cart</button>
+</div>
+<div class="product">
+🌽 <strong>Grade 1 Milling</strong><br>KSh 20 @ 2 kg
+<input class="budget-input" id="amount-grade1" type="number" min="1" step="1" placeholder="Enter amount (KSh)">
+<button class="cart-button" type="button" onclick="addBudgetItem('Grade 1 Milling','amount-grade1')">🛒 Add to Cart</button>
+</div>
+</div>
+<div class="budget-cart-box" id="budget-cart"><h3>🛒 Your Cart</h3><div id="budget-cart-items"><p>Your cart is empty.</p></div><div class="cart-total" id="budget-cart-total">Total: KSh 0</div><button class="cart-button" id="budget-proceed" type="button" onclick="proceedBudgetOrder()" style="display:none;">💬 Proceed to Order</button><button class="cart-button" type="button" onclick="clearBudgetCart()">🗑️ Clear Cart</button></div>
+</section>
 
     <a href="https://wa.me/254742629273?text=Hello%20ROYAN%20MILLER%20POSHOMILL%20%26%20CEREAL%20SHOP%2C%20I%27d%20like%20to%20make%20an%20order."
        target="_blank"
@@ -605,8 +620,8 @@
             <div class="payment-detail"><strong>PayBill:</strong> 542542</div>
             <div class="payment-detail"><strong>Account Number:</strong> 386651</div>
             <div class="payment-detail"><strong>Account Name:</strong> Dancan Otieno</div>
-            <button class="payment-button" onclick="showPayment()">📲 Proceed to M-PESA</button>
-            <p id="mpesa-status" style="display:none; margin-top:12px; font-weight:bold; color:#2e7d32;">📲 Opening M-PESA. Select <strong>Lipa na M-PESA → Pay Bill</strong>, then enter <strong>542542</strong> and account <strong>386651</strong>.</p>
+            <button class="payment-button" onclick="showPayment()">📲 Pay with M-PESA</button>
+            <p id="mpesa-status" style="display:none; margin-top:12px; font-weight:bold; color:#2e7d32;"></p>
         </div>
 
         <button class="clear-cart" id="clear-cart" onclick="clearCart()" style="display:none;">Clear Cart</button>
@@ -743,17 +758,36 @@ function orderCart(){
 }
 
 function showPayment(){
-    const box=document.getElementById('payment-box');
     const status=document.getElementById('mpesa-status');
-    box.style.display='block';
-    status.style.display='block';
-    box.scrollIntoView({behavior:'smooth',block:'center'});
+    const details='PayBill: 542542\nAccount Number: 386651';
 
-    // Open the M-PESA USSD prompt on supported mobile phones.
-    setTimeout(function(){
-        window.location.href='tel:*334%23';
-    },400);
+    // GitHub Pages has no M-PESA API/backend, so it cannot securely
+    // insert a PayBill, account number, amount, or PIN into the official
+    // M-PESA app/USSD screen. We can, however, copy the fixed payment
+    // details and open the M-PESA USSD menu for the customer.
+    navigator.clipboard.writeText(details).then(function(){
+        status.style.display='block';
+        status.innerHTML='✅ <strong>PayBill 542542</strong> and <strong>Account 386651</strong> have been copied. M-PESA will open next. Select <strong>Lipa na M-PESA → Pay Bill</strong>, paste/enter the copied details, then enter only the <strong>amount</strong> and your <strong>M-PESA PIN</strong>.';
+        setTimeout(function(){
+            window.location.href='tel:*334%23';
+        },500);
+    }).catch(function(){
+        status.style.display='block';
+        status.innerHTML='📲 Open M-PESA and select <strong>Lipa na M-PESA → Pay Bill</strong>. PayBill: <strong>542542</strong>. Account: <strong>386651</strong>. Enter the <strong>amount</strong> and <strong>PIN</strong> on M-PESA.';
+        setTimeout(function(){
+            window.location.href='tel:*334%23';
+        },500);
+    });
 }
+
+</script>
+<script>
+let budgetCart=[];
+function addBudgetItem(name,id){const input=document.getElementById(id),amount=Number(input.value);if(!amount||amount<=0){alert('Please enter the amount you want to spend on '+name+'.');input.focus();return;}const item=budgetCart.find(x=>x.name===name);if(item)item.amount+=amount;else budgetCart.push({name,amount});input.value='';renderBudgetCart();document.getElementById('budget-cart').scrollIntoView({behavior:'smooth',block:'center'});}
+function renderBudgetCart(){const box=document.getElementById('budget-cart-items'),total=document.getElementById('budget-cart-total'),proceed=document.getElementById('budget-proceed');if(!budgetCart.length){box.innerHTML='<p>Your cart is empty.</p>';total.textContent='Total: KSh 0';proceed.style.display='none';return;}let sum=0;box.innerHTML=budgetCart.map((x,i)=>{sum+=x.amount;return `<div class="cart-summary-item"><span>${x.name}</span><span>KSh ${x.amount.toLocaleString()} <button type="button" onclick="removeBudgetItem(${i})">✕</button></span></div>`}).join('');total.textContent='Total: KSh '+sum.toLocaleString();proceed.style.display='inline-block';}
+function removeBudgetItem(i){budgetCart.splice(i,1);renderBudgetCart();}
+function clearBudgetCart(){budgetCart=[];renderBudgetCart();}
+function proceedBudgetOrder(){if(!budgetCart.length){alert('Please add at least one item to your cart first.');return;}const lines=budgetCart.map(x=>x.name+' = KSh '+x.amount.toLocaleString());const total=budgetCart.reduce((s,x)=>s+x.amount,0);const msg='Hello Royan Miller, I will like to order this pack:%0A%0A'+lines.join('%0A')+'%0A%0ATotal: KSh '+total.toLocaleString()+'%0A%0APlease confirm my order.%0A%0AAfter making my order, I will make payment via M-PESA PayBill 542542, Account Number 386651.';window.open('https://wa.me/254742629273?text='+msg,'_blank');document.getElementById('payment-box').style.display='block';setTimeout(function(){document.getElementById('payment-box').scrollIntoView({behavior:'smooth',block:'center'});},300);}
 </script>
 </body>
 </html>
