@@ -291,6 +291,43 @@
         .cart-total { font-weight:bold; margin-top:10px; }
         .clear-cart { background:#777; color:white; border:none; padding:9px 14px; border-radius:6px; cursor:pointer; margin-top:10px; }
 
+
+        .payment-box {
+            display: none;
+            background: #e8f5e9;
+            border: 2px solid #2e7d32;
+            padding: 18px;
+            margin-top: 15px;
+            border-radius: 8px;
+        }
+
+        .payment-box h3 {
+            margin-top: 0;
+            color: #2e7d32;
+        }
+
+        .payment-detail {
+            font-size: 18px;
+            margin: 8px 0;
+        }
+
+        .payment-button {
+            background: #2e7d32;
+            color: white;
+            border: none;
+            padding: 14px 18px;
+            border-radius: 7px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            width: 100%;
+            margin-top: 10px;
+        }
+
+        .payment-button:hover {
+            background: #1b5e20;
+        }
+
         @media (max-width: 600px) {
             header {
                 padding: 24px 12px;
@@ -561,6 +598,17 @@
         <div id="cart-items">Your cart is empty.</div>
         <div class="cart-total" id="cart-total"></div>
         <button class="whatsapp" id="cart-order" onclick="orderCart()" style="display:none; border:none; cursor:pointer;">💬 Order Cart on WhatsApp</button>
+
+        <div class="payment-box" id="payment-box">
+            <h3>💳 Make Your Payment</h3>
+            <p><strong>After making your order on WhatsApp, please make payment via M-PESA:</strong></p>
+            <div class="payment-detail"><strong>PayBill:</strong> 542542</div>
+            <div class="payment-detail"><strong>Account Number:</strong> 386651</div>
+            <div class="payment-detail"><strong>Account Name:</strong> Dancan Otieno</div>
+            <button class="payment-button" onclick="showPayment()">📲 Proceed to M-PESA</button>
+            <p id="mpesa-status" style="display:none; margin-top:12px; font-weight:bold; color:#2e7d32;">📲 Opening M-PESA. Select <strong>Lipa na M-PESA → Pay Bill</strong>, then enter <strong>542542</strong> and account <strong>386651</strong>.</p>
+        </div>
+
         <button class="clear-cart" id="clear-cart" onclick="clearCart()" style="display:none;">Clear Cart</button>
     </div>
 
@@ -672,8 +720,40 @@
 let cart=[];
 function addToCart(name,price){const e=cart.find(i=>i.name===name);if(e)e.quantity++;else cart.push({name,price,quantity:1});updateCart();document.getElementById('cart').scrollIntoView({behavior:'smooth',block:'center'});}
 function updateCart(){const items=document.getElementById('cart-items'),count=document.getElementById('cart-count'),total=document.getElementById('cart-total'),order=document.getElementById('cart-order'),clear=document.getElementById('clear-cart');const n=cart.reduce((s,i)=>s+i.quantity,0),t=cart.reduce((s,i)=>s+i.price*i.quantity,0);count.textContent='('+n+')';if(!cart.length){items.innerHTML='Your cart is empty.';total.textContent='';order.style.display='none';clear.style.display='none';return;}items.innerHTML=cart.map(i=>'<div class="cart-item">'+i.name+' × '+i.quantity+' — KSh '+(i.price*i.quantity).toLocaleString()+'</div>').join('');total.textContent='Cart Total: KSh '+t.toLocaleString();order.style.display='block';clear.style.display='inline-block';}
-function clearCart(){cart=[];updateCart();}
-function orderCart(){if(!cart.length)return;const lines=cart.map(i=>i.name+' × '+i.quantity+' = KSh '+(i.price*i.quantity).toLocaleString());const total=cart.reduce((s,i)=>s+i.price*i.quantity,0);const msg='Hello Royan Miller, I will like to order this pack:%0A%0A'+lines.join('%0A')+'%0A%0ATotal: KSh '+total.toLocaleString()+'%0A%0APlease confirm my order.';window.open('https://wa.me/254742629273?text='+msg,'_blank');}
+function clearCart(){
+    cart=[];
+    updateCart();
+    document.getElementById('payment-box').style.display='none';
+}
+function orderCart(){
+    if(!cart.length)return;
+    const lines=cart.map(i=>i.name+' × '+i.quantity+' = KSh '+(i.price*i.quantity).toLocaleString());
+    const total=cart.reduce((s,i)=>s+i.price*i.quantity,0);
+    const msg='Hello Royan Miller, I will like to order this pack:%0A%0A'+
+        lines.join('%0A')+
+        '%0A%0ATotal: KSh '+total.toLocaleString()+
+        '%0A%0APlease confirm my order.%0A%0AAfter making my order, I will make payment via M-PESA PayBill 542542, Account Number 386651.';
+    window.open('https://wa.me/254742629273?text='+msg,'_blank');
+
+    // Show payment instructions after the WhatsApp order is opened.
+    document.getElementById('payment-box').style.display='block';
+    setTimeout(function(){
+        document.getElementById('payment-box').scrollIntoView({behavior:'smooth',block:'center'});
+    },300);
+}
+
+function showPayment(){
+    const box=document.getElementById('payment-box');
+    const status=document.getElementById('mpesa-status');
+    box.style.display='block';
+    status.style.display='block';
+    box.scrollIntoView({behavior:'smooth',block:'center'});
+
+    // Open the M-PESA USSD prompt on supported mobile phones.
+    setTimeout(function(){
+        window.location.href='tel:*334%23';
+    },400);
+}
 </script>
 </body>
 </html>
